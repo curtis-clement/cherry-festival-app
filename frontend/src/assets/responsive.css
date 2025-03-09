@@ -1,0 +1,34 @@
+/* Utility classes for responsive design */
+.mobile-only {
+  display: block;
+}
+
+.tablet-up {
+  display: none;
+}
+
+.desktop-up {
+  display: none;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+
+  .tablet-up {
+    display: block;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  .desktop-up {
+    display: block;
+  }
+
+  .desktop-hidden {
+    display: none;
+  }
+}
