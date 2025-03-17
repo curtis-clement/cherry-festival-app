@@ -9,6 +9,7 @@ export const authGuard = async (
 ) => {
   const authService = useAuthService();
   
+  // If this is a callback from Auth0, allow it
   if (to.query.state) {
     next();
     return;
