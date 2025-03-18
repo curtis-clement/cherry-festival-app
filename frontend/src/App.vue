@@ -16,5 +16,8 @@ const { isAuthenticated } = useAuthService();
 </template>
 
 <style scoped>
-
+main {
+  padding-top: 3rem;
+  width: 100%;
+}
 </style>

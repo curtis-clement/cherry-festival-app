@@ -5,7 +5,8 @@ import { PhHouse, PhWarehouse } from '@phosphor-icons/vue';
 
 <template>
   <nav>
-    
+    <img src="@/assets/icons/ncf-logo-2014.png" alt="Logo" class="logo" />
+
     <div class="nav-links">
       <RouterLink to="/">
         <PhHouse :size="16" />Home
@@ -19,28 +20,37 @@ import { PhHouse, PhWarehouse } from '@phosphor-icons/vue';
 
 <style scoped>
 nav {
-  width: 100%;
+  align-items: center;
+  background-color: var(--color-primary-blue);
+  display: flex;
+  height: 3rem;
+  left: 0;
   position: fixed;
   top: 0;
-  left: 0;
-  height: 3rem;
-  background-color: var(--color-primary-blue);
+  width: 100%;
+}
+
+.logo {
+  height: 1.75rem;
+  width: 1.75rem;
+  margin: 0 1rem;
 }
 
 .nav-links {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  display: flex;
   height: 100%;
-  padding: 0 1rem;
+  justify-content: start;
+  width: 100%;
 }
 
 .nav-links a {
-  color: var(--color-text-light);
-  text-decoration: none;
-  display: flex;
   align-items: center;
+  color: var(--color-text-light);
+  display: flex;
   gap: 0.5rem;
+  text-decoration: none;
+  padding: 0 1rem;
 }
 
 .nav-links a:hover {
@@ -48,7 +58,7 @@ nav {
 }
 
 .nav-links a.router-link-active {
-  text-decoration: underline;
   font-weight: bold;
+  text-decoration: underline;
 }
 </style>
