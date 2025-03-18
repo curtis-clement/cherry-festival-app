@@ -1,9 +1,10 @@
 :root {
   /* Colors */
-  --color-primary: #4CAF50;
-  --color-secondary: #2196F3;
+  --color-primary-red: #c83232;
+  --color-primary-blue: #2b446d;
   --color-text: #333333;
   --color-background: #ffffff;
+  --color-primary-grey: #c5c5c5;
   
   /* Spacing */
   --spacing-xs: 0.25rem;

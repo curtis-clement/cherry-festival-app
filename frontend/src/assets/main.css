@@ -5,23 +5,7 @@
 
 #app {
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
   padding: 1rem;
   font-weight: normal;
-}
-
-/* Tablet breakpoint */
-@media (min-width: 768px) {
-  #app {
-    padding: 1.5rem;
-    max-width: 768px;
-  }
-}
-
-/* Desktop breakpoint */
-@media (min-width: 1024px) {
-  #app {
-    max-width: 1280px;
-    padding: 2rem;
-  }
 }
