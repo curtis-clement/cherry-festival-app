@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { authGuard } from '@/services/auth/authGuard';
 import HomeView from '@/views/HomeView.vue'
 import WarehouseRoutes from '@/modules/warehouse/routes';
+import AccountRoutes from '@/modules/accounts/routes';
 
 const routes = [
   {
@@ -10,6 +11,7 @@ const routes = [
     component: HomeView,
     beforeEnter: authGuard,
   },
+  ...AccountRoutes,
   ...WarehouseRoutes,
 ]
 

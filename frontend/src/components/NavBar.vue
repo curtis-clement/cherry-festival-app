@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { PhHouse, PhWarehouse } from '@phosphor-icons/vue';
+import { ACCOUNT, WAREHOUSE } from '@/router/router.constants';
+import { PhHouse, PhWarehouse, PhGear } from '@phosphor-icons/vue';
 
 </script>
 
@@ -11,10 +12,15 @@ import { PhHouse, PhWarehouse } from '@phosphor-icons/vue';
       <RouterLink to="/">
         <PhHouse :size="16" />Home
       </RouterLink>
-      <RouterLink :to="{ name: 'warehouse' }">
+
+      <RouterLink :to="{ name: WAREHOUSE }">
         <PhWarehouse :size="16" />Warehouse
       </RouterLink>
     </div>
+
+    <RouterLink :to="{ name: ACCOUNT }">
+      <PhGear :size="20" />
+    </RouterLink>
   </nav>
 </template>
 
@@ -44,7 +50,8 @@ nav {
   width: 100%;
 }
 
-.nav-links a {
+.nav-links a,
+nav > a {
   align-items: center;
   color: var(--color-text-light);
   display: flex;
@@ -53,11 +60,13 @@ nav {
   padding: 0 1rem;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+nav > a:hover {
   text-decoration: underline;
 }
 
-.nav-links a.router-link-active {
+.nav-links a.router-link-active,
+nav > a.router-link-active {
   font-weight: bold;
   text-decoration: underline;
 }
