@@ -2,7 +2,7 @@ import './assets/main.css'
 
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import { auth0Plugin } from '@/auth/auth0Config';
+import { auth0Plugin } from '@/services/auth/auth0Config';
 
 import App from './App.vue'
 import router from './router'
