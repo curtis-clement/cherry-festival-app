@@ -2,8 +2,9 @@
   /* Colors */
   --color-primary-red: #c83232;
   --color-primary-blue: #2b446d;
-  --color-text: #333333;
-  --color-background: #ffffff;
+  --color-text-dark: #333333;
+  --color-text-light: #ffffff;
+  --color-background: #f2f1f1;
   --color-primary-grey: #c5c5c5;
   
   /* Spacing */

@@ -5,7 +5,7 @@ import { createPinia } from 'pinia';
 import { auth0Plugin } from '@/services/auth/auth0Config';
 
 import App from './App.vue'
-import router from './router'
+import router from './router/router'
 
 const app = createApp(App)
 
