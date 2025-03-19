@@ -6,5 +6,5 @@
   "trailingComma": "es5",
   "arrowParens": "avoid",
   "endOfLine": "lf",
-  "vueIndentScriptAndStyle": true
+  "vueIndentScriptAndStyle": false
 } 

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import { useAuthService } from './services/auth/authService';
-import NavBar from '@/components/NavBar.vue';
+import { useAuthService } from './services/auth/authService'
+import NavBar from '@/components/NavBar.vue'
 
-const { isAuthenticated } = useAuthService();
+const { isAuthenticated } = useAuthService()
 </script>
 
 <template>

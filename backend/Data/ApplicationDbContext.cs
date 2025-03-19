@@ -6,12 +6,12 @@ namespace backend.Data;
 
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {
-  public DbSet<WarehouseSection> WarehouseSections { get; set; }
+    public DbSet<WarehouseSection> WarehouseSections { get; set; }
 
-  protected override void OnModelCreating(ModelBuilder modelBuilder)
-  {
-    base.OnModelCreating(modelBuilder);
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
 
-    modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-  }
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    }
 }
