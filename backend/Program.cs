@@ -2,6 +2,8 @@ using Backend.Infrastructure.Authentication;
 using Backend.Infrastructure.Authentication.Extensions;
 using Backend.Infrastructure.Authentication.Services;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+using backend.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,14 +48,18 @@ builder.Services.AddAuth0Authentication(auth0Config);
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
-// Add after your other service configurations
+// Add Database Configuration
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Add after other service configurations
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("default", policy =>
     {
         policy.WithOrigins(
-            "http://localhost:5000", // Your Vue.js development server
-            "https://your-production-domain.com"
+            "http://localhost:5000", // Vue.js development server
+            "https://production-domain.com"
         )
         .AllowAnyMethod()
         .AllowAnyHeader()
@@ -62,6 +68,14 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+// Initialize Database (add this before other middleware)
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    await context.Database.MigrateAsync();
+    await DatabaseSeeder.SeedDatabase(context);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
