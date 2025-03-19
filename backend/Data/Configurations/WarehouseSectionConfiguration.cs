@@ -10,13 +10,19 @@ public class WarehouseSectionConfiguration : IEntityTypeConfiguration<WarehouseS
     {
         builder.HasKey(e => e.Id);
         builder.Property(e => e.Id)
-          .IsRequired()
-          .HasMaxLength(36)
-          .IsUnicode(false)
-          .IsFixedLength()
-          .HasColumnType("char(36)")
-          .HasDefaultValueSql("NEWID()");
-        builder.HasIndex(e => e.Id).IsUnique();
-        builder.Property(e => e.Name).IsRequired().HasMaxLength(255);
+            .HasDefaultValueSql("gen_random_uuid()")
+            .ValueGeneratedOnAdd();
+
+        builder.Property(e => e.Name)
+            .IsRequired()
+            .HasMaxLength(255);
+
+        builder.Property(e => e.CreatedAt)
+            .IsRequired()
+            .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+        builder.Property(e => e.UpdatedAt)
+            .IsRequired()
+            .HasDefaultValueSql("CURRENT_TIMESTAMP");
     }
 }
