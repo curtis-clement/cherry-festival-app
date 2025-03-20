@@ -15,6 +15,10 @@ trim_trailing_whitespace = true
 indent_style = space
 indent_size = 4
 
+[*.{cs,vb}]
+dotnet_style_collection_initializer = false
+dotnet_diagnostic.IDE0028.severity = none
+
 # New line preferences
 csharp_new_line_before_open_brace = all
 csharp_new_line_before_else = true
@@ -53,4 +57,4 @@ dotnet_naming_style.pascal_case_style.capitalization = pascal_case
 dotnet_naming_symbols.pascal_case_symbols.applicable_kinds = class,struct,interface,enum,property,method,event,delegate
 dotnet_naming_rule.pascal_case_rule.severity = warning
 dotnet_naming_rule.pascal_case_rule.symbols = pascal_case_symbols
-dotnet_naming_rule.pascal_case_rule.style = pascal_case_style 
+dotnet_naming_rule.pascal_case_rule.style = pascal_case_style
