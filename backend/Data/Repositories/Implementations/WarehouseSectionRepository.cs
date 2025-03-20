@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using backend.Data.Entities;
 using backend.Data.Repositories.Interfaces;
-using backend.Data;
 
 namespace backend.Data.Repositories.Implementations;
 

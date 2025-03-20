@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using backend.Data.Entities;
 
 namespace backend.Data.Repositories.Interfaces;
