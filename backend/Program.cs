@@ -4,10 +4,15 @@ using Backend.Infrastructure.Authentication.Services;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using backend.Data;
+using backend.Services.Interfaces;
+using backend.Services.Implementations;
+using backend.Data.Repositories.Interfaces;
+using backend.Data.Repositories.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -39,10 +44,15 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+// Register services
+builder.Services.AddScoped<IWarehouseSectionService, WarehouseSectionService>();
+builder.Services.AddScoped<IWarehouseSectionRepository, WarehouseSectionRepository>();
+
 // Auth Configuration
 var auth0Config = builder.Configuration.GetSection("Auth0")
     .Get<AuthenticationConfiguration>() ?? throw new InvalidOperationException("Auth0 configuration is missing");
 builder.Services.AddAuth0Authentication(auth0Config);
+builder.Services.AddAuthorization();
 
 // Register HTTP context accessor and auth service
 builder.Services.AddHttpContextAccessor();
@@ -88,5 +98,7 @@ app.UseHttpsRedirection();
 app.UseCors("default");
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();
