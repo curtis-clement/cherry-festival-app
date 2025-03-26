@@ -7,6 +7,7 @@ namespace backend.Data;
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {
     public DbSet<WarehouseSection> WarehouseSections { get; set; }
+    public DbSet<Shelf> Shelves { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
