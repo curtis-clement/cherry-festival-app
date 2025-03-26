@@ -5,7 +5,7 @@ using backend.Models.DTOs;
 namespace backend.Controllers;
 
 [ApiController]
-[Route("api/warehouse-sections")]
+[Route("api/warehouse/sections")]
 public class WarehouseSectionController(IWarehouseSectionService sectionService) : ControllerBase
 {
     [HttpGet]
@@ -15,7 +15,7 @@ public class WarehouseSectionController(IWarehouseSectionService sectionService)
         return Ok(sections);
     }
 
-    [HttpGet("section/{id}")]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetSectionById(Guid id)
     {
         try
