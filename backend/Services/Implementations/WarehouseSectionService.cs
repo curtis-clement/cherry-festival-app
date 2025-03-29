@@ -13,26 +13,6 @@ public class WarehouseSectionService(IWarehouseSectionRepository repository) : I
         return sections.Select(MapToDto);
     }
 
-    private static WarehouseSectionDto MapToDto(WarehouseSection section)
-    {
-        return new WarehouseSectionDto
-        {
-            Id = section.Id,
-            Name = section.Name,
-            Description = section.Description,
-            Shelves = section.Shelves.Select(s => new ShelfDto
-            {
-                Id = s.Id,
-                ShelfNumber = s.ShelfNumber,
-                WarehouseSectionId = s.WarehouseSectionId,
-                CreatedAt = s.CreatedAt,
-                UpdatedAt = s.UpdatedAt
-            }).ToList(),
-            CreatedAt = section.CreatedAt,
-            UpdatedAt = section.UpdatedAt
-        };
-    }
-
     public async Task<WarehouseSectionDto> GetSectionByIdWithShelvesAsync(Guid id)
     {
         var section = await repository.GetSectionByIdWithShelvesAsync(id);
@@ -49,6 +29,26 @@ public class WarehouseSectionService(IWarehouseSectionRepository repository) : I
     public async Task<bool> DeleteSectionAsync(Guid id)
     {
         return await repository.DeleteSectionAsync(id);
+    }
+
+    private static WarehouseSectionDto MapToDto(WarehouseSection section)
+    {
+        return new WarehouseSectionDto
+        {
+            Id = section.Id,
+            Name = section.Name,
+            Description = section.Description,
+            Shelves = section.Shelves.Select(s => new ShelfDto
+            {
+                Id = s.Id,
+                ShelfNumber = s.ShelfNumber,
+                WarehouseSectionId = s.WarehouseSectionId,
+                CreatedAt = s.CreatedAt,
+                UpdatedAt = s.UpdatedAt
+            }).ToList(),
+            CreatedAt = section.CreatedAt,
+            UpdatedAt = section.UpdatedAt,
+        };
     }
 
     private static WarehouseSection MapToEntity(WarehouseSectionDto dto)
